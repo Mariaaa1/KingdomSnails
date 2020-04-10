@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">KingdomSnails</string>
+    <string name="start">GO</string>
+    <string name="back">END</string>
+</resources>
