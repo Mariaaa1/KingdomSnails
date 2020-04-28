@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/main_bgl" />
+        android:src="@drawable/main_bgl" />
 
     <LinearLayout
         android:id="@+id/cont1"
