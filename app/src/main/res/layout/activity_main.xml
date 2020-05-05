@@ -26,7 +26,7 @@
             android:id="@+id/buttonStart"
             android:layout_width="wrap_content"
             android:layout_height="120dp"
-            android:background="@drawable/style_b_a"
+            android:background="@drawable/style_b_ab"
             android:layout_weight="1"
             android:text="@string/start"
             android:paddingLeft="10dp"

@@ -24,11 +24,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
         <LinearLayout
             android:id="@+id/ecran3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
             <TextView
                 android:id="@+id/textView8888"
                 android:layout_width="70dp"
@@ -37,8 +38,18 @@
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="30dp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/textVie99999"
+                android:layout_width="70dp"
+                android:layout_height="79dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:background="@drawable/hhh"
+                android:textColor="@color/black"
+                android:textSize="30dp"
                 android:textStyle="bold" />
-
+        </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/lin2"
@@ -268,49 +279,7 @@
 
 
             </LinearLayout>
-            <LinearLayout
-                android:id="@+id/lin9"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="12dp">
 
-                <Button
-                    android:id="@+id/textView23"
-                    android:layout_width="70dp"
-                    android:layout_height="79dp"
-                    android:layout_marginRight="5dp"
-                    android:background="@drawable/l1style3"
-                    android:gravity="center"
-                    android:textColor="@color/black"
-                    android:textSize="30dp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/textView24"
-                    android:layout_width="80dp"
-                    android:layout_height="79dp"
-                    android:layout_marginRight="5dp"
-                    android:background="@drawable/l1style3"
-                    android:gravity="center"
-                    android:textColor="@color/black"
-                    android:textSize="30dp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/textView25"
-                    android:layout_width="80dp"
-                    android:layout_height="79dp"
-                    android:layout_marginRight="5dp"
-                    android:background="@drawable/l1style3"
-                    android:gravity="center"
-                    android:textColor="@color/black"
-                    android:textSize="30dp"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-        </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
