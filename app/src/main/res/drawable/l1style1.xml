@@ -4,5 +4,7 @@
         android:color="@color/butt00"
         />
     <stroke android:color="@color/green"
-        android:width="2dp"/>
+        android:width="2dp"
+        android:background="@drawable/left"
+        />
 </shape>
