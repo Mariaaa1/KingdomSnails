@@ -70,7 +70,7 @@ public class Evil extends View {
         p.setAntiAlias(true);
         p.setTextSize(55.0f);
         p.setColor(Color.WHITE);
-        canvas.drawText(points + "", viewWidth - 200, 70, p);
+        canvas.drawText(points + "", viewHeight - 200, 70, p);
     }
 
     protected void update() {

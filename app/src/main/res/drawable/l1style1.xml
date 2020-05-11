@@ -5,6 +5,5 @@
         />
     <stroke android:color="@color/green"
         android:width="2dp"
-        android:background="@drawable/left"
-        />
-</shape>
+    />
+    </shape>

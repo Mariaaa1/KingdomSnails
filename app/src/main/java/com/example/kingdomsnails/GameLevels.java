@@ -49,6 +49,7 @@ startActivity(intent);finish();
         });
 
     }
+
     @Override
     public void onBackPressed(){
 
@@ -59,6 +60,7 @@ startActivity(intent);finish();
         } catch (Exception e) {
 
         }
+
     }
     }
 

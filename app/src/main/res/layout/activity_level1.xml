@@ -123,13 +123,11 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="12dp">
 
-                <Button
+                <TextView
                     android:id="@+id/textView11"
                     android:layout_width="70dp"
                     android:layout_height="79dp"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/l1style3"
-                    android:drawableStart="@drawable/right"
                     android:gravity="center"
                     android:textColor="@color/black"
                     android:textSize="30dp"
@@ -168,25 +166,21 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="12dp">
 
-                <Button
+                <TextView
                     android:id="@+id/textView14"
                     android:layout_width="70dp"
                     android:layout_height="79dp"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/l1style3"
-                    android:drawableStart="@drawable/right"
                     android:gravity="center"
                     android:textColor="@color/black"
                     android:textSize="30dp"
                     android:textStyle="bold" />
 
-                <Button
+                <TextView
                     android:id="@+id/textView15"
                     android:layout_width="80dp"
                     android:layout_height="79dp"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/l1style3"
-                    android:drawableStart="@drawable/up"
                     android:gravity="center"
                     android:textColor="@color/black"
                     android:textSize="30dp"
@@ -213,25 +207,21 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="12dp">
 
-                <Button
+                <TextView
                     android:id="@+id/textView17"
                     android:layout_width="70dp"
                     android:layout_height="79dp"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/l1style3"
-                    android:drawableStart="@drawable/right"
                     android:gravity="center"
                     android:textColor="@color/black"
                     android:textSize="30dp"
                     android:textStyle="bold" />
 
-                <Button
+                <TextView
                     android:id="@+id/textView18"
                     android:layout_width="80dp"
                     android:layout_height="79dp"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/l1style3"
-                    android:drawableStart="@drawable/up"
                     android:gravity="center"
                     android:textColor="@color/black"
                     android:textSize="30dp"
@@ -258,25 +248,21 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="12dp">
 
-                <Button
+                <TextView
                     android:id="@+id/textView20"
                     android:layout_width="70dp"
                     android:layout_height="79dp"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/l1style3"
-                    android:drawableStart="@drawable/right"
                     android:gravity="center"
                     android:textColor="@color/black"
                     android:textSize="30dp"
                     android:textStyle="bold" />
 
-                <Button
+                <TextView
                     android:id="@+id/textView21"
                     android:layout_width="80dp"
                     android:layout_height="79dp"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/l1style3"
-                    android:drawableStart="@drawable/right"
                     android:gravity="center"
                     android:textColor="@color/black"
                     android:textSize="30dp"

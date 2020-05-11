@@ -30,6 +30,7 @@ import java.util.Timer;
 
 public class Level1 extends AppCompatActivity {
 
+
     Dialog dialog;
 
 
@@ -47,13 +48,13 @@ public class Level1 extends AppCompatActivity {
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-dialog = new Dialog(this);
-dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-dialog.setContentView(R.layout.dialog1);
-dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-dialog.setCancelable(false);
+        dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog1);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setCancelable(false);
 
-        TextView btn = (TextView)dialog.findViewById(R.id.btn);
+        TextView btn = (TextView) dialog.findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +62,7 @@ dialog.setCancelable(false);
                     Intent intent = new Intent(Level1.this, GameLevels.class);
                     startActivity(intent);
                     finish();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
                 dialog.dismiss();
@@ -75,11 +76,23 @@ dialog.setCancelable(false);
             }
         });
 
-dialog.show();
+        dialog.show();
+    }
+        @Override
+        public void onBackPressed () {
+
+            try {
+                Intent intent = new Intent(Level1.this, GameLevels.class);
+                startActivity(intent);
+                finish();
+            } catch (Exception e) {
+
+            }
+        }
+
 
     }
 
-    }
 
 
 
