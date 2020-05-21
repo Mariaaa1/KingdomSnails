@@ -39,15 +39,12 @@
                 android:textColor="@color/black"
                 android:textSize="30dp"
                 android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/textVie99999"
+            <SurfaceView
+                android:id="@+id/surface"
                 android:layout_width="70dp"
                 android:layout_height="79dp"
-                android:layout_marginRight="20dp"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="30dp"
-                android:textStyle="bold" />
+                android:layout_gravity="center" />
+
 
 
         </LinearLayout>

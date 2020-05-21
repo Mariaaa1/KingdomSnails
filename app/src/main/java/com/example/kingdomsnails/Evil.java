@@ -1,105 +1,123 @@
 package com.example.kingdomsnails;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.PathMeasure;
+import android.graphics.PointF;
 import android.graphics.Rect;
 import android.os.CountDownTimer;
 import android.util.AttributeSet;
+import android.view.Display;
+import android.view.MotionEvent;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 
-public class Evil extends View {
+public class Evil extends SurfaceView implements SurfaceHolder.Callback {
+private DrawThread drawThread;
 
-    private Sprite hhh;
-
-    private int viewWidth;
-    private int viewHeight;
-
-    private int points = 0;
-
-    private final int timerInterval = 20;
-
-    public Evil(Context context) {
+public Evil(Context context) {
         super(context);
-
-        Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.hhh);
-        int w = b.getWidth() / 5;
-        int h = b.getHeight() / 3;
-        Rect firstFrame = new Rect(0, 0, w, h);
-        hhh = new Sprite(2000, 250, -300, 0, firstFrame, b);
-        for (int i = 0; i < 3; i++) {
-            for (int j = 4; j >= 0; j--) {
-
-                if (i == 0 && j == 4) {
-                    continue;
-                }
-
-                if (i == 2 && j == 0) {
-                    continue;
-                }
-
-                hhh.addFrame(new Rect(j * w, i * h, j * w + w, i * w + w));
-            }
+        getHolder().addCallback(this);
         }
-        Timer t = new Timer();
-        t.start();
+
+@Override
+public void surfaceChanged(SurfaceHolder holder, int format, int width,
+        int height) {
+        }
+
+@Override
+public void surfaceCreated(SurfaceHolder holder) {
+        drawThread = new DrawThread(getHolder(), getResources());
+        drawThread.setRunning(true);
+        drawThread.start();
+        }
+
+@Override
+public void surfaceDestroyed(SurfaceHolder holder) {
+        boolean retry = true;
+        // завершаем работу потока
+        drawThread.setRunning(false);
+        while (retry) {
+        try {
+        drawThread.join();
+        retry = false;
+        } catch (InterruptedException e) {
+        // если не получилось, то будем пытаться еще и еще
+        }
+        }
+        }
+class DrawThread extends Thread{
+    private boolean runFlag = false;
+    private SurfaceHolder surfaceHolder;
+    private Bitmap picture;
+    private Matrix matrix;
+    private long prevTime;
+
+    public DrawThread(SurfaceHolder surfaceHolder, Resources resources){
+        this.surfaceHolder = surfaceHolder;
+
+        // загружаем картинку, которую будем отрисовывать
+        picture = BitmapFactory.decodeResource(resources, R.drawable.hhh);
+
+        // формируем матрицу преобразований для картинки
+        matrix = new Matrix();
+        matrix.postScale(3.0f, 3.0f);
+        matrix.postTranslate(100.0f, 100.0f);
+
+        // сохраняем текущее время
+        prevTime = System.currentTimeMillis();
     }
 
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-
-        viewWidth = w;
-        viewHeight = h;
-
+    public void setRunning(boolean run) {
+        runFlag = run;
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        canvas.drawARGB(250, 127, 199, 255);
-        hhh.draw(canvas);
-
-        Paint p = new Paint();
-        p.setAntiAlias(true);
-        p.setTextSize(55.0f);
-        p.setColor(Color.WHITE);
-        canvas.drawText(points + "", viewHeight - 200, 70, p);
-    }
-
-    protected void update() {
-        hhh.update(timerInterval);
-
-        if (hhh.getX() < - hhh.getFrameWidth()) {
-            teleport();
-            points +=10;
-        }
-    }
-    private void teleport () {
-        hhh.setX(viewWidth + Math.random() * 500);
-        hhh.setY(Math.random() * (viewHeight - hhh.getFrameHeight()));
-    }
-    class Timer extends CountDownTimer {
-
-        public Timer() {
-            super(Integer.MAX_VALUE, timerInterval);
-        }
-
-        @Override
-        public void onTick(long millisUntilFinished) {
-
-            update ();
-        }
-
-        @Override
-        public void onFinish() {
-
+    public void run() {
+        Canvas canvas;
+        while (runFlag) {
+            // получаем текущее время и вычисляем разницу с предыдущим
+            // сохраненным моментом времени
+            long now = System.currentTimeMillis();
+            long elapsedTime = now - prevTime;
+            if (elapsedTime > 30){
+                // если прошло больше 30 миллисекунд - сохраним текущее время
+                // и повернем картинку на 2 градуса.
+                // точка вращения - центр картинки
+                prevTime = now;
+                matrix.preRotate(2.0f, picture.getWidth() / 2, picture.getHeight() / 2);
+            }
+            canvas = null;
+            try {
+                // получаем объект Canvas и выполняем отрисовку
+                canvas = surfaceHolder.lockCanvas(null);
+                synchronized (surfaceHolder) {
+                    canvas.drawBitmap(picture, matrix, null);
+                }
+            }
+            finally {
+                if (canvas != null) {
+                    // отрисовка выполнена. выводим результат на экран
+                    surfaceHolder.unlockCanvasAndPost(canvas);
+                }
+            }
         }
     }
 }
+        }

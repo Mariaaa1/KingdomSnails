@@ -34,16 +34,13 @@ public class Level1 extends AppCompatActivity {
     Dialog dialog;
 
 
-    private int viewWidth;
-    private int viewHeight;
-
-    private int points = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level1);
+
+        setContentView(new Evil(this));
 
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);

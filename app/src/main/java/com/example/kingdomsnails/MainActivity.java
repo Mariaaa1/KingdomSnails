@@ -43,7 +43,6 @@ private Toast backToast;
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
 
         if(backPressedTime +2000 > System.currentTimeMillis()){
             backToast.cancel();
@@ -53,7 +52,6 @@ private Toast backToast;
             backToast = Toast.makeText(getBaseContext(), "Нажмите ещё раз, чтобы вайти", Toast.LENGTH_SHORT);
             backToast.show();
         }
-
 
         backPressedTime = System.currentTimeMillis();
     }
